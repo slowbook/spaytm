@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://shashank:1234qwer@cluster0.lcyggia.mongodb.net/todo-app');
+const mongoose = require('mongoose') ;
+const dotenv = require('dotenv');
+dotenv.config();
+mongoose.connect(process.env.DATABASE_URI);
 
 const usersc= new mongoose.Schema({
     username: String,
