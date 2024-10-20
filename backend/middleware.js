@@ -1,4 +1,7 @@
-const JWT_SECRET = "abc123" ;
+// const dotenv = require("dotenv") ;
+
+
+const JWT_SECRET = process.env.JWT_SECRET
 const jwt = require("jsonwebtoken");
 
 const authMiddleware=( req,res,next)=>{

@@ -75,8 +75,7 @@ Userrouter.post("/signin",async (req,res)=>{
 
     if (user) {
         const token = jwt.sign({
-            abc : "abc" ,
-            abcd : "abcd"
+            userId : user._id
         }, process.env.JWT_SECRET);
   
         res.json({
