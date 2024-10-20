@@ -9,15 +9,16 @@ import {SendMoney} from './pages/SendMoney.jsx'
 
   
   function App() {
+
     return (
       <>
-
          <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/send" element={<SendMoney />} />
+            <Route path="/send" element={<SendMoney />} />
           </Routes>
         </BrowserRouter>
         
