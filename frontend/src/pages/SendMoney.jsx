@@ -44,7 +44,7 @@ const [message , setMessage] = useState("") ;
                     </div>
                     <button onClick={async()=>{
                         try {
-                            const {data} = await axios.post("http://localhost:3000/api/v1/account/transfer" , {
+                            const {data} = await axios.post("https://spaytm1.onrender.com/api/v1/account/transfer" , {
                                 to : id ,
                                 amount
                             } ,{

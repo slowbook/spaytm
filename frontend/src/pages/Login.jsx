@@ -20,7 +20,7 @@ export const Login = () => {
         <InputBox onChange={(e) => setPassword(e.target.value)} placeholder="123456" label={"Password"} />
         <div className="pt-4">
           <Button label={"Sign in"} onClick={async() =>{
-            await axios.post("http://localhost:3000/api/v1/user/signin" , {
+            await axios.post("https://spaytm1.onrender.com/api/v1/user/signin" , {
               username : username ,
               password : password
             })
