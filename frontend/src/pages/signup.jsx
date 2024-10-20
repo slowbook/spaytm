@@ -5,6 +5,7 @@ import { InputBox } from "../components/InputBox"
 import { SubHeading } from "../components/subheading"
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const Signup = () => {
@@ -40,6 +41,7 @@ export const Signup = () => {
               password
           })
         localStorage.setItem("token", `Bearer ${response.data.token}`) ;
+        navigate('/dashboard')
         }
           
           }
