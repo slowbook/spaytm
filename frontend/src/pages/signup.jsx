@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Signup = () => {
-
+  const navigate = useNavigate();
   const [firstName,setFirstName]= useState("");
   const [lastName,setLastName]= useState("");
   const [username,setUsername]= useState("");
@@ -31,21 +31,22 @@ export const Signup = () => {
         }} placeholder="test@gmail.com" label={"Email"} />
         <InputBox onChange={e=>{
           setPassword(e.target.value)
-        }} placeholder="123456" label={"Password"} />
-        <div className="pt-4">
+        }} placeholder="123456" label={"Password"} />        <div className="pt-4">
           <Button onClick={async ()=>{
-            const response=await axios.post("https://spaytm1.onrender.com/api/v1/user/signup",{
-              username,
-              firstName,
-              lastName,
-              password
-          })
-        localStorage.setItem("token", `Bearer ${response.data.token}`) ;
-        navigate('/dashboard')
-        }
-          
-          }
-         label={"Sign up"} />
+            try {
+              const response = await axios.post("https://spaytm1.onrender.com/api/v1/user/signup", {
+                username,
+                firstName,
+                lastName,
+                password
+              });
+              localStorage.setItem("token", `Bearer ${response.data.token}`);
+              navigate('/dashboard');
+            } catch (error) {
+              console.error("Error signing up:", error);
+              alert("Error creating account. Please try again.");
+            }
+          }} label={"Sign up"} />
         </div>
         <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
       </div>

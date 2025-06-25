@@ -17,14 +17,19 @@ export const Login = () => {
         <Heading label={"Sign in"} />
         <SubHeading label={"Enter your credentials to access your account"} />
         <InputBox onChange={(e) => setUsername(e.target.value)} placeholder="test@gmail.com" label={"Email"} />
-        <InputBox onChange={(e) => setPassword(e.target.value)} placeholder="123456" label={"Password"} />
-        <div className="pt-4">
+        <InputBox onChange={(e) => setPassword(e.target.value)} placeholder="123456" label={"Password"} />        <div className="pt-4">
           <Button label={"Sign in"} onClick={async() =>{
-            await axios.post("https://spaytm1.onrender.com/api/v1/user/signin" , {
-              username : username ,
-              password : password
-            })
-            navigate('/dashboard')
+            try {
+              const response = await axios.post("https://spaytm1.onrender.com/api/v1/user/signin", {
+                username: username,
+                password: password
+              });
+              localStorage.setItem("token", `Bearer ${response.data.token}`);
+              navigate('/dashboard');
+            } catch (error) {
+              console.error("Error signing in:", error);
+              alert("Error signing in. Please check your credentials.");
+            }
           }} />
         </div>
         <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"} />
